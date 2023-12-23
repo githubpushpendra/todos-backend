@@ -1,0 +1,2 @@
+## Dependencies
+express, mongoose, dotenv
