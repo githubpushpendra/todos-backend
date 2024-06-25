@@ -1,4 +1,5 @@
 const {User} = require('../db-config/mongo-db')
+const {matchPass} = require('../service/encryption')
 const mongoose = require('mongoose')
 
 const authUser = async(user, callback)=> {
@@ -13,10 +14,10 @@ const authUser = async(user, callback)=> {
   if(result == null) {
     callback("user does not exist", null)
   } else {
-    if(user.password !== result.password) {
-      callback("Invalid Password")
-    } else {
+    if(await matchPass(user.password, result.password)) {
       callback(null, "User Authenticated")
+    } else {
+      callback("Invalid Password")
     }
   }
   

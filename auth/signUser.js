@@ -8,7 +8,7 @@ require('dotenv').config()
 router.post('/', async(req, res) =>{
   const secretKey = process.env.JWT_SIGN_KEY
   const user = req.body
-  
+  // console.log("Inside Signin")
   await authUser(user, (err, result)=>{
     if(err) res.send(err)
   })
