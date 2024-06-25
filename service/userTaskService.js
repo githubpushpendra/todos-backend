@@ -28,7 +28,7 @@ const getTasks = async(email, callbackFunction)=>{
     // console.log(user)
     const tasks = user.tasks
     if(tasks === undefined || tasks === null) callbackFunction(null, "No task is available !")
-    else callbackFunction(null, tasks)
+    else callbackFunction(null, {email: user.email, tasks: tasks})
   } catch(err) {
     console.log(err)
     callbackFunction(err, null)

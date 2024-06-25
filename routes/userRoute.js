@@ -15,11 +15,11 @@ router.get("/", (req, res)=>{
   authToken(token, (err, user)=>{
     if(err) res.send(err)
     else {
-      getTasks(user.email, (err, tasks)=>{
+      getTasks(user.email, (err, {email: email, tasks: tasks})=>{
         if(err) {
           res.send("Could not fetch tasks")
         } else {
-          res.status(200).send(tasks)
+          res.status(200).send({email: email, tasks: tasks})
         }
       })
     }

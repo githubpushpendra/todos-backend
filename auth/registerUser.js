@@ -8,7 +8,7 @@ router.post("/", async(req, res)=>{
   const newUser = new User(req.body)
   UVR = verifyUser(newUser)
   // console.log("registering User!")
-  if(UVR !== true) res.send(UVR)
+  if(UVR !== true) res.status(404).send(UVR)
   else {
     try {
       const encyptedUser = new User(
