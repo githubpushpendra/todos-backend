@@ -18,7 +18,7 @@ router.post("/", async(req, res)=>{
         }
       ) 
       const savedUser = await encyptedUser.save()
-      res.send("User registered successfully")
+      res.send("User registered successfully") 
     } catch(err) {
       if(err.code === 11000) {
         res.send("This email is already registered")
