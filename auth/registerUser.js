@@ -21,10 +21,10 @@ router.post("/", async(req, res)=>{
       res.send("User registered successfully") 
     } catch(err) {
       if(err.code === 11000) {
-        res.send("This email is already registered")
+        res.status(404).send("This email is already registered")
       } else {
         console.log(err)
-        res.send("We are encountering some problem in registering you, Please message on 6387018533 with details")
+        res.status(404).send("We are encountering some problem in registering you, Please message on 6387018533 with details")
       }
     }
   }
